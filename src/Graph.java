@@ -101,21 +101,22 @@ public class Graph {
             }
         }
 
-        if (D[endEdgeNumber] != 0){
+        if (D[edges.get(endEdgeNumber).sortNumber - 1] == 0)
           return "N";
-        }
 
         var strBuilder = new StringBuilder();
+
         var tempEdge = endEdge;
+        var resultArray = new ArrayList<Integer>();
+
         strBuilder.append("Y \n");
-        var arr = new ArrayList<Integer>();
         while (tempEdge.ancestor != null) {
-            arr.add(tempEdge.number + 1);
+            resultArray.add(tempEdge.number + 1);
             tempEdge = tempEdge.ancestor;
         }
-        arr.add(startEdge.number + 1);
-        for (int i = arr.size() - 1; i > -1; i--) {
-            strBuilder.append(arr.get(i) + " ");
+        resultArray.add(startEdge.number + 1);
+        for (int i = resultArray.size() - 1; i > -1; i--) {
+            strBuilder.append(resultArray.get(i) + " ");
         }
         var p = D[arrayListSortEdge.indexOf(endEdge)];
         strBuilder.append("\n" + D[arrayListSortEdge.indexOf(endEdge)]);

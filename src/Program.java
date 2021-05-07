@@ -21,7 +21,6 @@ public class Program {
         matrix.remove(matrix.size() - 1);
 
         g.MakeGraph(matrix);
-        System.out.println(g.arrayToString());
         try (FileWriter writer = new FileWriter("result.txt", false)) {
             String text = g.findMaxPath(startEdgeNumber - 1,endEdgeNumber - 1);
             writer.write(text);
